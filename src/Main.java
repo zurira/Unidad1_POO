@@ -6,7 +6,7 @@ public class Main {
         computadora.encender();
         computadora.encender();
 
-        computadora.setModelo("Inspiron 3535");
+        computadora.setModelo("Inspiron 35");
 
         System.out.println("Marca:" +computadora.getMarca());
         System.out.println("Modelo:" +computadora.getModelo());
