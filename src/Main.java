@@ -13,6 +13,14 @@ public class Main {
         estudiante1.setNota(3, 70);
         estudiante1.setNota(4, 80);
 
+        estudiante2.setNombre("Keren");
+        estudiante2.setMatricula("e002");
+        estudiante2.setNota(0, 90);
+        estudiante2.setNota(1, 100);
+        estudiante2.setNota(2, 80);
+        estudiante2.setNota(3, 70);
+        estudiante2.setNota(4, 80);
+
 
 
         System.out.println("Nombre: " + estudiante1.getNombre());
