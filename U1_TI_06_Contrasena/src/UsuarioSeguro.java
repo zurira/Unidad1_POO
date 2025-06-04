@@ -3,8 +3,8 @@ import javax.swing.plaf.synth.SynthOptionPaneUI;
 
 public class UsuarioSeguro {
 
-    private String nombreUsuario = "";
-    private String contrasena = "";
+    private String nombreUsuario = getNombreUsuario();
+    private String contrasena = getContrasena();
 
     public String getNombreUsuario() {
         return nombreUsuario;
@@ -22,16 +22,27 @@ public class UsuarioSeguro {
     }
 
     public void setContrasena(String contrasena) {
+        boolean mayusculas=false;
+        boolean minusculas=false;
         if (contrasena == null || contrasena.length() < 8) {
-            String contrasenaN = JOptionPane.showInputDialog("La contaseña debe tener 8 caracteres");
+            if (Character.isUpperCase(Integer.parseInt(contrasena)) || Character.isLowerCase(Integer.parseInt(contrasena))) {
+             mayusculas=true;
+             minusculas=true;
+            }else {
+                contrasena=JOptionPane.showInputDialog("Ingrese una contraseña valida");
+            }
+            String contrasenaN = JOptionPane.showInputDialog("La contraseña debe tener 8 caracteres");
         }
-        for (int i = 0; i < contrasena.length(); i++) {
-            System.out.print(contrasena.charAt(i));
-        }
+
         this.contrasena = contrasena;
     }
 
-    public boolean autenticar(String intentPassword) {
-    return contrasena.equals(intentPassword);
+    public boolean autenticar(boolean mayusculas, boolean minusculas, String intentContrasena) {
+        if (mayusculas==true || minusculas==true){
+            System.out.println("Acceso concedido");
+        }else {
+            System.out.println("Acceso denegado");
+        }
+    return mayusculas || minusculas;
     }
 }

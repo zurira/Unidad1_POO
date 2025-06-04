@@ -7,6 +7,7 @@ public class Main {
         String contrasena = JOptionPane.showInputDialog("Ingresa contrasena");
         usuario.setNombreUsuario(nombre);
         usuario.setContrasena(contrasena);
+        usuario.autenticar();
 
     }
 }
