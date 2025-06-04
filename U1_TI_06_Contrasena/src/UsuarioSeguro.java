@@ -37,12 +37,8 @@ public class UsuarioSeguro {
         this.contrasena = contrasena;
     }
 
-    public boolean autenticar(boolean mayusculas, boolean minusculas, String intentContrasena) {
-        if (mayusculas==true || minusculas==true){
-            System.out.println("Acceso concedido");
-        }else {
-            System.out.println("Acceso denegado");
-        }
-    return mayusculas || minusculas;
+    public boolean autenticar(String intentPassword) {
+
+    return contrasena!= null && contrasena.equals(intentPassword);
     }
 }
