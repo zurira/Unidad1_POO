@@ -3,8 +3,8 @@ import javax.swing.plaf.synth.SynthOptionPaneUI;
 
 public class UsuarioSeguro {
 
-    private String nombreUsuario = getNombreUsuario();
-    private String contrasena = getContrasena();
+    private String nombreUsuario;
+    private String contrasena;
 
     public String getNombreUsuario() {
         return nombreUsuario;
@@ -12,7 +12,7 @@ public class UsuarioSeguro {
 
     public void setNombreUsuario(String nombreUsuario) {
         if (nombreUsuario == null || nombreUsuario.isEmpty()) {
-           String nombreN = JOptionPane.showInputDialog(null, "El nombre del usuario no puede estar vacio, ingrese usuario");
+           nombreUsuario = JOptionPane.showInputDialog(null, "El nombre del usuario no puede estar vacio, ingrese usuario");
         }
         this.nombreUsuario = nombreUsuario;
     }
@@ -24,16 +24,35 @@ public class UsuarioSeguro {
     public void setContrasena(String contrasena) {
         boolean mayusculas=false;
         boolean minusculas=false;
+        boolean numero=false;
         if (contrasena == null || contrasena.length() < 8) {
-            if (Character.isUpperCase(Integer.parseInt(contrasena)) || Character.isLowerCase(Integer.parseInt(contrasena))) {
-             mayusculas=true;
-             minusculas=true;
-            }else {
-                contrasena=JOptionPane.showInputDialog("Ingrese una contraseña valida");
-            }
-            String contrasenaN = JOptionPane.showInputDialog("La contraseña debe tener 8 caracteres");
+            contrasena = JOptionPane.showInputDialog("La contraseña debe tener 8 caracteres");
+        }
+        for (int i = 0; i < contrasena.length(); i++) {
+        char c = contrasena.charAt(i);
+
+        if (Character.isUpperCase(c)) {
+            mayusculas = true;
+        } else if (Character.isLowerCase(c)) {
+            minusculas = true;
+        } else if (Character.isDigit(c)) {
+            numero = true;
+        }
+        }
+        if (!mayusculas) {
+            JOptionPane.showMessageDialog(null, "La contraseña debe contener al menos una letra mayúscula.");
+            return;
         }
 
+        if (!minusculas) {
+            JOptionPane.showMessageDialog(null, "La contraseña debe contener al menos una letra minúscula.");
+            return;
+        }
+
+        if (!numero) {
+            JOptionPane.showMessageDialog(null, "La contraseña debe contener al menos un número.");
+            return;
+        }
         this.contrasena = contrasena;
     }
 
